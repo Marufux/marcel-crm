@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CRM Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        header {
+            background-color: yellow;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            text-align: center;
+        }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #sidebar li {
+            margin-bottom: 10px;
+        }
+
+        #sidebar a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #sidebar a:hover {
+            background: #fff;
+            color: #333;
+        }
+
+        #content {
+            margin: 20px 0 0 250px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .chart {
+            width: 45%;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+        }
+
+        .chart canvas {
+            width: 100%;
+            height: auto;
+            background-color: gra;
+        }
+
+        .graph-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+        }
+
+        .graph canvas {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="dashboard-heading">
+            Marcel CRM System
+        </h1>
+    </header>
+    <div id="sidebar">
+        <img src="media/images/marcel-logo.png" height="60px" width="140px" style="margin-bottom: 20px;
+        margin-left: 10px;" alt="">
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Customers</a></li>
+            <li><a href="#">Leads</a></li>
+            <li><a href="#">Sales</a></li>
+            <li><a href="#">Reports</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div class="chart-container">
+            <div class="chart">
+                <h2>Products Sold</h2>
+                <svg height="300" width="300" viewBox="0 0 20 20">
+                    <circle r="10" cx="10" cy="10" fill="blue" />
+                    <circle r="5" cx="10" cy="10" fill="transparent" stroke="tomato" stroke-width="10"
+                        stroke-dasharray="calc(35 * 31.4 / 100) 31.4" transform="rotate(-90) translate(-20)" />
+                </svg>
+            </div>
+            <div class="chart">
+                <h2>Online vs Physical store</h2>
+                <svg height="300" width="300" viewBox="0 0 20 20">
+                    <circle r="10" cx="10" cy="10" fill="gray" />
+                    <circle r="5" cx="10" cy="10" fill="bisque" stroke="tomato" stroke-width="10"
+                        stroke-dasharray="calc(35 * 31.42 / 100) 31.42" />
+                </svg>
+            </div>
+        </div>
+        <div class="graph-container">
+            <h2>Revenue by Month</h2>
+            <canvas id="revenue-graph"></canvas>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js"></script>
+    <script>
+        // Products Sold chart
+        var products
